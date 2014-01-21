@@ -1,0 +1,676 @@
+﻿@section head
+{
+    <link href="~/Content/bootstrap/css/datepicker.css" rel="stylesheet" />
+    <link href="~/Content/typeahead.js-master/autocomplete.css" rel="stylesheet" />
+    <script src="~/Content/typeahead.js-master/dist/typeahead.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap-datepicker.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap-modal.js"></script>
+    <script>
+
+        $(function () {
+            var zones = [
+              "Mallorca Airport ( PMI ), Mallorca, España",
+              "Alcúdia Seaport ( Ship ), Mallorca, España",
+             'Alcúdia, Mallorca, España',
+'Arenal, Mallorca, España',
+'Arta, Mallorca, España',
+'Banyalbufar, Mallorca, España',
+'Bendinat, Mallorca, España',
+'Bunyola, Mallorca, España',
+'Cabo Blanco, Mallorca, España',
+'Cala Barca, Mallorca, España',
+'Cala Blava, Mallorca, España',
+'Cala Bona, Mallorca, España',
+'Cala d\'Or, Mallorca, España',
+            'Cala Egos, Mallorca, España',
+            'Cala Fiquera, Mallorca, España',
+            'Cala Fornells, Mallorca, España',
+            'Cala Guya, Mallorca, España',
+            'Cala Mandia, Mallorca, España',
+            'Cala Mayor, Mallorca, España',
+            'Cala Mesquida, Mallorca, España',
+            'Cala Millor, Mallorca, España',
+            'Cala MondragÃ³, Mallorca, España',
+            'Cala Murada, Mallorca, España',
+            'Cala Pi, Mallorca, España',
+            'Cala Rajada, Mallorca, España',
+            'Cala Romantica, Mallorca, España',
+            'Cala San Vicente, Mallorca, España',
+            'Cala Santany, Mallorca, España',
+            'Cala Tuent, Mallorca, España',
+            'Cala Vinyas, Mallorca, España',
+            'Calas de Mallorca, Mallorca, España',
+            'Calvia (town), Mallorca, España',
+            'Camp de Mar, Mallorca, España',
+            'Campanet, Mallorca, España',
+            'Can Pastilla, Mallorca, España',
+            'Can Picafort, Mallorca, España',
+            'Canyamel, Mallorca, España',
+            'Ciudad Jardin, Mallorca, España',
+            'Colonia San Pedro, Mallorca, España',
+            'Colonia Sant Jordi, Mallorca, España',
+            'Costa de los Pinos, Mallorca, España',
+            'Crestatx - Sa Pobla, Mallorca, España',
+            'Deia, Mallorca, España',
+            'Delta, Mallorca, España',
+            'El Dorado, Mallorca, España',
+            'El Toro, Mallorca, España',
+            'Esporles, Mallorca, España',
+            'Estallenchs, Mallorca, España',
+            'Felanitx, Mallorca, España',
+            'Font de se Sa Cala, Mallorca, España',
+            'Formentor, Mallorca, España',
+            'Hilton Sa Torre Hotel, Mallorca, España',
+            'Illetas, Mallorca, España',
+            'Inca, Mallorca, España',
+            'La Calobra, Mallorca, España',
+            'LLoret Vista Alegre, Mallorca, España',
+            'LLuch, Mallorca, España',
+            'LLucmayor, Mallorca, España',
+            'Magaluf, Mallorca, España',
+            'Maioris, Mallorca, España',
+            'Montuiri, Mallorca, España',
+            'Orient, Mallorca, España',
+            'Paguera, Mallorca, España',
+            'Palma (City), Mallorca, España',
+            'Palma Nova, Mallorca, España',
+            'Palma Port (SHIP), Mallorca, España',
+            'Petra, Mallorca, España',
+            'Playa de Muro, Mallorca, España',
+            'Playa de Palma, Mallorca, España',
+            'Pollensa, Mallorca, España',
+            'Porreras, Mallorca, España',
+            'Portals Nous, Mallorca, España',
+            'Porto Colom, Mallorca, España',
+            'Porto Cristo, Mallorca, España',
+            'Porto Petro, Mallorca, España',
+            'Puerto Alcúdia, Mallorca, España',
+            'Puerto Andratx, Mallorca, España',
+            'Puerto Pollensa, Mallorca, España',
+            'Puerto Soller, Mallorca, España',
+            'PuigpuÃ±yent, Mallorca, España',
+            'Punta Reina, Mallorca, España',
+            'Randa, Mallorca, España',
+            'Sa Coma, Mallorca, España',
+            'Sa Rapita, Mallorca, España',
+            'Sant Elm, Mallorca, España',
+            'Sant Joan, Mallorca, España',
+            'Sant Salvador, Mallorca, España',
+            'Santa Maria, Mallorca, España',
+            'Santa Ponsa, Mallorca, España',
+            'Selva, Mallorca, España',
+            'Sineu, Mallorca, España',
+            'Soller, Mallorca, España',
+            'Son Julia Hotel, Mallorca, España',
+            'Son Serra de Marina, Mallorca, España',
+            'Son Veri, Mallorca, España',
+            'Son Vida, Mallorca, España',
+            'S\'Estanyol, Mallorca, España',
+            'S\'Illot, Mallorca, España',
+            'Valldemosa, Mallorca, España'
+            ];
+
+            $('#MT_SearchFrom').typeahead([
+{
+    name: 'pickupPoint',
+    local: zones,
+
+}
+            ]);
+            $('#MT_SearchFrom').on('typeahead:selected', function (object, datum) {
+                 @*      // Example: {type: "typeahead:selected", timeStamp: 1377890016108, jQuery203017338529066182673: true, isTrigger: 3, namespace: ""...}
+                 console.log(object);
+
+                 // Datum containg value, tokens, and custom properties
+                 // Example: {value: "@JakeHarding", tokens: ['Jake', 'Harding'], name: "Jake Harding", profileImageUrl: "https://twitter.com/JakeHaridng/profile_img"}
+                 console.log(datum);*@
+                AddFrom();
+                $('#SearchFrom').hide();
+                $('#panelSearch').show("fast");
+                $('#dFrom').show("fast", function () { $('#dateFrom').datepicker('show'); });
+                // $('#alertReturn').show("fast");
+
+
+            });
+
+            $('#MT_SearchTo').typeahead([
+{
+    name: 'destinationTo',
+    local: zones,
+
+}]);
+            $('#MT_SearchTo').on('typeahead:selected', function (object, datum) {
+                 @*      // Example: {type: "typeahead:selected", timeStamp: 1377890016108, jQuery203017338529066182673: true, isTrigger: 3, namespace: ""...}
+                 console.log(object);
+
+                 // Datum containg value, tokens, and custom properties
+                 // Example: {value: "@JakeHarding", tokens: ['Jake', 'Harding'], name: "Jake Harding", profileImageUrl: "https://twitter.com/JakeHaridng/profile_img"}
+                 console.log(datum);*@
+                AddTo();
+                $('#alertReturn').show("fast");
+                $('#SearchTo').hide();
+                //$('#panelSearch').show("fast");
+                
+            });
+
+            $('#MT_SearchFrom').popover({
+                placement: "top",
+                content: "<h4 class=\"text-info\">I\'m looking for</h4>",
+                html: true,
+                trigger: "manual"
+            });
+            $('#MT_SearchFrom').popover("show");
+            $('#MT_SearchFrom').click(function () {
+                $('#MT_SearchFrom').popover("hide");
+            });
+
+            $('#dateFrom').datepicker({
+
+
+            }).on('changeDate', function (e) {
+                $('#dFrom').hide('fast', function () { $('#tFrom').show('shake', 100, 500); });
+
+
+            });
+            $('#dateFrom').datepicker({
+
+
+            }).on('changeDate', function (e) {
+                $('#dFrom').hide();
+                $('#tFrom').show();
+
+            });
+
+            $('#dateTo').datepicker({
+
+            }).on('changeDate', function (e) {
+                $('#dTo').hide();
+                $('#tTo').show();
+             });
+
+
+            $('#timeFrom').click(function () {
+                $('#tFrom').hide();
+                $('#SearchTo').show();
+            });
+
+            $('#timeTo').click(function () {
+                $('#tTo').hide();
+                Search();
+            });
+
+        });
+
+        function AddFrom() {
+            var from = "<div><span class='text-info'><strong>PickUp point from: </strong></span> " + '<span>' + $("#MT_SearchFrom").val() + '</span></div>';
+            $("#ElementSearch").append(from);
+
+        }
+        function AddTo() {
+            var to = "<div><span class='text-info'><strong>Destination to: </strong></span> " + '<span>' + $("#MT_SearchTo").val() + '</span></div>';
+            $("#ElementSearch").append(to);
+
+        }
+
+        function GoToDestination() {
+            $('#dTo').show("fast", function () { $('#dateTo').datepicker('show'); });
+            
+            $('#alertReturn').hide();
+        }
+        function Search() {
+            $('#BottomPanel').hide();
+            $('#PanelSearch').hide();
+            $('#PanelTransfers').show();
+
+        }
+
+    </script>
+}
+
+
+<div class="accordion" id="panelSearch" style="display: none;">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#panelSearch" href="#collapseOne">Search Data
+            </a>
+        </div>
+        <div id="collapseOne" class="accordion-body collapse in">
+            <div id="ElementSearch" class="accordion-inner">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="jumbotron" id="PanelSearch">
+
+
+    <form class="form-search">
+        <div id="SearchFrom" style="padding-top: 20px;">
+            <h4 class="text-info">Pick up point from:</h4>
+            <input type="text" id="MT_SearchFrom" placeholder="Search" class="glyphicon glyphicon-search" style="width: 410px;">
+        </div>
+        <div id="dFrom" style="display: none;">
+            <h4 class="text-info">Transfer Date</h4>
+            <div class="navbar-inner" style="display: inline-block;">
+                <div id="dateFrom">
+                </div>
+            </div>
+        </div>
+        <div id="tFrom" style="display: none;">
+            <h4 class="text-info">Transfer Time</h4>
+            <div class="navbar-inner" style="display: inline-block;">
+                <select multiple="multiple" id="timeFrom" style="width: 80px; margin-top: 15px; margin-bottom: 15px; height: 200px;">
+                    @for (int i = 0; i <= 23; i++)
+                    {
+                        <option>@Html.Raw(i.ToString("00") + ":00")</option>
+                        <option>@Html.Raw(i.ToString("00") + ":15")</option>
+                        <option>@Html.Raw(i.ToString("00") + ":30")</option>
+                        <option>@Html.Raw(i.ToString("00") + ":45")</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+
+        <div id="alertReturn" class="alert alert-info" style="margin-top: 10px; display: none;">
+            <h4>Do you want a return day?</h4>
+            <a class="btn btn-info btn-large" onclick="GoToDestination();">Yes
+            </a>
+            <a class="btn btn-large" onclick="Search();">No
+            </a>
+        </div>
+
+        <div id="SearchTo" style="padding-top: 20px; display: none;">
+            <h4 class="text-info">Destination to:</h4>
+            <input type="text" id="MT_SearchTo" placeholder="Search" class="glyphicon glyphicon-search" style="width: 410px;">
+        </div>
+
+        <div id="dTo" style="display: none;">
+            <h4 class="text-info">Return Date</h4>
+            <div class="navbar-inner" style="display: inline-block;">
+                <div id="dateTo">
+                </div>
+            </div>
+        </div>
+        <div id="tTo" style="display: none;">
+            <h4 class="text-info">Return Time</h4>
+            <div class="navbar-inner" style="display: inline-block;">
+                <select multiple="multiple" id="timeTo" style="width: 80px; margin-top: 15px; margin-bottom: 15px; height: 200px;">
+                    @for (int i = 0; i <= 23; i++)
+                    {
+                        <option>@Html.Raw(i.ToString("00") + ":00")</option>
+                        <option>@Html.Raw(i.ToString("00") + ":15")</option>
+                        <option>@Html.Raw(i.ToString("00") + ":30")</option>
+                        <option>@Html.Raw(i.ToString("00") + ":45")</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+
+
+    </form>
+
+
+    <br />
+
+
+</div>
+
+<div id="PanelTransfers" style="display: none;">
+
+    <div class="row-fluid alert" style="width: inherit; padding: 4px;">
+        <div class="span3">
+            <img src="~/Images/Cars/taxi_blanco.jpg" class="img-rounded" style="width: 150px; height: 100px" />
+        </div>
+
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/bag.png" style="width: 60px; height: 60px;" />
+                </div>
+                <div class="text-info">
+                    <strong>4</strong>
+                </div>
+            </div>
+        </div>
+       <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/man.png"   style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>4</strong>
+                </div>
+            </div>
+        </div>
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/clock.png"  style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>15 min</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="span3">
+            <div style="text-align: center; padding-left: 40px;">
+                <div style="font-size: 25px; font-weight: bold; text-rendering: optimizelegibility; margin-top: 10px; color: #51a351">
+                    80,10 €                 
+                </div>
+                <div style="margin-top: 2px; color: #333333">
+                    (including taxes)
+                </div>
+                <div style="margin-top: 3px;">
+                    <button class="btn btn-large btn-success" type="button">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid alert" style="width: inherit; padding: 4px; border: 1px solid #e5e5e5; background-color: transparent;">
+        <div class="span3">
+            <img src="~/Images/Cars/Mercedes_clase_S.jpg" class="img-rounded" style="width: 150px; height: 100px" />
+        </div>
+
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/bag.png" style="width: 60px; height: 60px;" />
+                </div>
+                <div class="text-info">
+                    <strong>3</strong>
+                </div>
+            </div>
+        </div>
+       <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/man.png"   style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>3</strong>
+                </div>
+            </div>
+        </div>
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/clock.png"  style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>15 min</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="span3">
+            <div style="text-align: center; padding-left: 40px;">
+                <div style="font-size: 25px; font-weight: bold; text-rendering: optimizelegibility; margin-top: 10px; color: #51a351">
+                    80,10 €                 
+                </div>
+                <div style="margin-top: 2px; color: #333333">
+                    (including taxes)
+                </div>
+                <div style="margin-top: 3px;">
+                    <button class="btn btn-large btn-success" type="button">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="row-fluid alert" style="width: inherit; padding: 4px;">
+        <div class="span3">
+            <img src="~/Images/Cars/Renaul_rafic_8_pax.jpg" class="img-rounded" style="width: 150px; height: 100px" />
+        </div>
+
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/bag.png" style="width: 60px; height: 60px;" />
+                </div>
+                <div class="text-info">
+                    <strong>6</strong>
+                </div>
+            </div>
+        </div>
+       <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/man.png"   style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>8</strong>
+                </div>
+            </div>
+        </div>
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/clock.png"  style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>25 min</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="span3">
+            <div style="text-align: center; padding-left: 40px;">
+                <div style="font-size: 25px; font-weight: bold; text-rendering: optimizelegibility; margin-top: 10px; color: #51a351">
+                    150,30 €                 
+                </div>
+                <div style="margin-top: 2px; color: #333333">
+                    (including taxes)
+                </div>
+                <div style="margin-top: 3px;">
+                    <button class="btn btn-large btn-success" type="button">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid alert" style="width: inherit; padding: 4px; border: 1px solid #e5e5e5; background-color: transparent;">
+        <div class="span3">
+            <img src="~/Images/Cars/MB_16_pax.jpg" class="img-rounded" style="width: 150px; height: 100px" />
+        </div>
+
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/bag.png" style="width: 60px; height: 60px;" />
+                </div>
+                <div class="text-info">
+                    <strong>10</strong>
+                </div>
+            </div>
+        </div>
+       <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/man.png"   style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>16</strong>
+                </div>
+            </div>
+        </div>
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/clock.png"  style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>27 min</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="span3">
+            <div style="text-align: center; padding-left: 40px;">
+                <div style="font-size: 25px; font-weight: bold; text-rendering: optimizelegibility; margin-top: 10px; color: #51a351">
+                    175,30 €                 
+                </div>
+                <div style="margin-top: 2px; color: #333333">
+                    (including taxes)
+                </div>
+                <div style="margin-top: 3px;">
+                    <button class="btn btn-large btn-success" type="button">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="row-fluid alert" style="width: inherit; padding: 4px;">
+        <div class="span3">
+            <img src="~/Images/Cars/Bus_PB_55_pax.jpg" class="img-rounded" style="width: 150px; height: 100px" />
+        </div>
+
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/bag.png" style="width: 60px; height: 60px;" />
+                </div>
+                <div class="text-info">
+                    <strong>55</strong>
+                </div>
+            </div>
+        </div>
+       <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/man.png"   style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>55</strong>
+                </div>
+            </div>
+        </div>
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/clock.png"  style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>35 min</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="span3">
+            <div style="text-align: center; padding-left: 40px;">
+                <div style="font-size: 25px; font-weight: bold; text-rendering: optimizelegibility; margin-top: 10px; color: #51a351">
+                    325,15 €                 
+                </div>
+                <div style="margin-top: 2px; color: #333333">
+                    (including taxes)
+                </div>
+                <div style="margin-top: 3px;">
+                    <button class="btn btn-large btn-success" type="button">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid alert" style="width: inherit; padding: 4px; border: 1px solid #e5e5e5; background-color: transparent;">
+        <div class="span3">
+            <img src="~/Images/Cars/Bus_2_pisos_Neoplan.jpg" class="img-rounded" style="width: 150px; height: 100px" />
+        </div>
+
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/bag.png" style="width: 60px; height: 60px;" />
+                </div>
+                <div class="text-info">
+                    <strong>90</strong>
+                </div>
+            </div>
+        </div>
+       <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/man.png"   style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>85</strong>
+                </div>
+            </div>
+        </div>
+        <div class="span2">
+            <div style="text-align: center; padding-top: 10px;">
+                <div>
+                    <img src="~/Images/clock.png"  style="width: 60px; height: 60px;"/>
+                </div>
+                <div class="text-info">
+                    <strong>30 min</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="span3">
+            <div style="text-align: center; padding-left: 40px;">
+                <div style="font-size: 16px; font-weight: bold; text-rendering: optimizelegibility; margin-top: 10px; color: #51a351">
+                    Call for Pricing                 
+                </div>
+                <div style="margin-top: 2px; color: #333333">
+                    +34 674-888-477
+                </div>
+                <div style="margin-top: 3px;">
+                    <button class="btn btn-large btn-success" type="button">Reserve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div id="BottomPanel">
+    <hr>
+
+    <span style="text-align: center;">
+        <p class="muted">The easy way to book airport transfers / seaport transfers / golf transfers - since 2006</p>
+    </span>
+    <!-- Example row of columns -->
+
+    <div class="row-fluid marketing">
+        <div class="span4" style="text-align: center;">
+
+            <img src="~/Images/Cars/taxi_blanco.jpg" class="img-rounded" style="width: 140px; height: 90px" />
+            <p class="text-success">Up to 4 passengers</p>
+
+            <img src="~/Images/Cars/Mercedes_clase_S.jpg" class="img-rounded" style="width: 140px; height: 90px" />
+            <p class="text-success">Premium up to 3 passengers</p>
+
+
+
+        </div>
+
+        <div class="span4" style="text-align: center;">
+            <img src="~/Images/Cars/Renaul_rafic_8_pax.jpg" class="img-rounded" style="width: 140px; height: 90px" />
+            <p class="text-success">Up to 8 passengers</p>
+
+
+            <img src="~/Images/Cars/MB_16_pax.jpg" class="img-rounded" style="width: 140px; height: 90px" />
+            <p class="text-success">Up to 16 passengers</p>
+
+
+        </div>
+        <div class="span4" style="text-align: center;">
+            <img src="~/Images/Cars/Bus_PB_55_pax.jpg" class="img-rounded" style="width: 140px; height: 90px" />
+            <p class="text-success">Up to 55 passengers</p>
+
+            <img src="~/Images/Cars/Bus_2_pisos_Neoplan.jpg" class="img-rounded" style="width: 140px; height: 90px" />
+            <p class="text-success">Up to 85 passengers</p>
+        </div>
+
+
+
+        <p class="muted" style="text-align: justify;"><small>We provide reliable, very low-cost airport/seaport private transfers to hotels, villas, apartments, marinas and private residences with a modern fleet of fully licensed and insured taxis, minivans, minibuses and coaches. We will take you from the airport/seaport to your destination and back in comfort and safety, at a low low price and with great customer service.</small></p>
+        <p class="muted"><small>BOOK TODAY  confirmation emailed instantly</small></p>
+        <p class="muted text-info"><small>If you book a transfer with us and then find another transfer company more cheaper than ours with the same quality and care we promise to refund double the difference.</small></p>
+
+
+    </div>
+</div>

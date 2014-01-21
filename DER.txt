@@ -1,0 +1,36 @@
+Language (ID_Language, Name)
+
+Country(ID_Country, ID_Language, Name)
+
+Zone(ID_Zone, ID_Language, Name, ID_Country)
+
+Destination(ID_Destination, ID_Language, Name, ID_Zone)
+
+Vehicle (ID_Vehicle, URL_Image, Passengers, Luggage, E_J_Time, ID_Group)
+Vehicle_Language (ID_Vehicle, ID_Language,  Name, Description, Terms)
+
+Group (ID_Group, ID_Language, Name, Description, Terms)
+
+Currency (ID_Currency, Symbol, Name)
+
+Supplier (ID_Supplier, Name)
+
+Destination_Supplier (ID_Destination, ID_Supplier, ID_Language, Name, Address, Phone, Mail, Terms)
+
+Rate (ID_Rate, ID_Destination_Output, ID_Destination_Arrival, Date_Start, Date_End, ID_Supplier, Margin, Margin_Type,  Supplier_Price, ID_Currency, VAT, Active)
+Rate_Language (ID_Rate, ID_Language, Name, Terms)
+Rate_Vehicle  (ID_Rate, ID_Vehicle)
+
+
+
+
+Reservation (ID_Reservation, Locator, Date_Record, Date_Output, Date_Arrival,  ID_Destination_Output, ID_Destination_Arrival,FlightNumber_Output, FlightNumber_Arrival, Name_Accommodation, ID_Supplier, Margin, Margin_Type, Supplier_Price, Total_Price, ID_Currency, VAT, ID_Reservation_Satus, IP, Client_Note, ID_Client, ID_Vehicle)
+
+Reservation_Status(ID_Reservation_Satus, ID_Language,  Name)
+
+---
+Client
+
+Client_Invoice
+
+Availability_List
