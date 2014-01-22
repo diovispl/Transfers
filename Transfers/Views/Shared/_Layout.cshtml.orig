@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>@ViewBag.Title</title>
 <<<<<<< HEAD
+    <title>@ViewBag.Title </title>
     @**@
-@**@
+     @**@
 =======
->>>>>>> Quitando
+    <title>@ViewBag.Title</title>
+@**@
+>>>>>>> 128d760cccf79f7edbbe297e6dcfc2a20cef587c
    @* @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")*@
     <!-- Los estilos -->
