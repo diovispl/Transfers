@@ -6,13 +6,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 <<<<<<< HEAD
-    <title>@ViewBag.Title </title>
-    @**@
-     @**@
+    <!-- titulo mio -->
 =======
+<!-- titulo -->
+>>>>>>> 3d473e1a2c314452c72d0445e5da061be7b52051
     <title>@ViewBag.Title</title>
-@**@
->>>>>>> 128d760cccf79f7edbbe297e6dcfc2a20cef587c
    @* @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")*@
     <!-- Los estilos -->
