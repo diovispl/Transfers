@@ -1,0 +1,897 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TransfersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="TransfersModelStoreContainer">
+          <EntitySet Name="Client" EntityType="TransfersModel.Store.Client" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Client_Invoice" EntityType="TransfersModel.Store.Client_Invoice" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Country" EntityType="TransfersModel.Store.Country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Currency" EntityType="TransfersModel.Store.Currency" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Destination" EntityType="TransfersModel.Store.Destination" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Destination_Supplier" EntityType="TransfersModel.Store.Destination_Supplier" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Group" EntityType="TransfersModel.Store.Group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Language" EntityType="TransfersModel.Store.Language" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Language_Text" EntityType="TransfersModel.Store.Language_Text" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MarginType" EntityType="TransfersModel.Store.MarginType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rate" EntityType="TransfersModel.Store.Rate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rate_Language" EntityType="TransfersModel.Store.Rate_Language" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rate_Vehicle" EntityType="TransfersModel.Store.Rate_Vehicle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Reservation" EntityType="TransfersModel.Store.Reservation" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Reservation_Status" EntityType="TransfersModel.Store.Reservation_Status" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Reservation_Terms" EntityType="TransfersModel.Store.Reservation_Terms" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Supplier" EntityType="TransfersModel.Store.Supplier" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="TransfersModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Vehicle" EntityType="TransfersModel.Store.Vehicle" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Vehicle_Language" EntityType="TransfersModel.Store.Vehicle_Language" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Zone" EntityType="TransfersModel.Store.Zone" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Date_Birth" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client_Invoice">
+          <Key>
+            <PropertyRef Name="ID_Client_Invoice" />
+          </Key>
+          <Property Name="ID_Client_Invoice" Type="int" Nullable="false" />
+          <Property Name="ID_Client" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Company_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" Nullable="false" MaxLength="80" />
+          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Mail" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+          <Property Name="City" Type="nvarchar" MaxLength="80" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_Country" Type="varchar" MaxLength="10" />
+          <Property Name="ID_Reservation" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID_Country" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Country" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ID_Language" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="ID_Currency" />
+          </Key>
+          <Property Name="ID_Currency" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Symbol" Type="nvarchar" Nullable="false" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="ID_Destination" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Destination" Type="bigint" Nullable="false" />
+          <Property Name="ID_Language" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ID_Zone" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Destination_Supplier">
+          <Key>
+            <PropertyRef Name="ID_Destination" />
+            <PropertyRef Name="ID_Supplier" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Destination" Type="bigint" Nullable="false" />
+          <Property Name="ID_Supplier" Type="int" Nullable="false" />
+          <Property Name="ID_Language" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="30" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Terms" Type="nvarchar" MaxLength="800" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="ID_Group" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Group" Type="int" Nullable="false" />
+          <Property Name="ID_Language" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="Terms" Type="nvarchar" MaxLength="800" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Language" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Language_Text">
+          <Key>
+            <PropertyRef Name="ID_Text" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Text" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ID_Language" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Text" Type="ntext" />
+        </EntityType>
+        <EntityType Name="MarginType">
+          <Key>
+            <PropertyRef Name="ID_MarginType" />
+          </Key>
+          <Property Name="ID_MarginType" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="ID_Rate" />
+          </Key>
+          <Property Name="ID_Rate" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Destination_Output" Type="bigint" Nullable="false" />
+          <Property Name="ID_Destination_Arrival" Type="bigint" Nullable="false" />
+          <Property Name="Date_Start" Type="datetime" Nullable="false" />
+          <Property Name="Date_End" Type="datetime" Nullable="false" />
+          <Property Name="ID_Supplier" Type="int" Nullable="false" />
+          <Property Name="ID_Currency" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="VAT" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rate_Language">
+          <Key>
+            <PropertyRef Name="ID_Rate" />
+            <PropertyRef Name="ID_Vehicle" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Rate" Type="bigint" Nullable="false" />
+          <Property Name="ID_Vehicle" Type="bigint" Nullable="false" />
+          <Property Name="ID_Language" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Terms" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Rate_Vehicle">
+          <Key>
+            <PropertyRef Name="ID_Rate" />
+            <PropertyRef Name="ID_Vehicle" />
+          </Key>
+          <Property Name="ID_Rate" Type="bigint" Nullable="false" />
+          <Property Name="ID_Vehicle" Type="bigint" Nullable="false" />
+          <Property Name="Margin" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="ID_MarginType" Type="int" Nullable="false" />
+          <Property Name="Price_Supplier" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Extra_Suitcase" Type="int" />
+          <Property Name="Extra_Hand_Bags" Type="int" />
+          <Property Name="Extra_Cycles" Type="int" />
+          <Property Name="Extra_Golf_Bags" Type="int" />
+          <Property Name="Extra_Child_Safety" Type="int" />
+          <Property Name="Extra_Child_Booster" Type="int" />
+          <Property Name="Price_Suitcase" Type="decimal" Scale="2" />
+          <Property Name="Price_Hand_Bags" Type="decimal" Scale="2" />
+          <Property Name="Price_Cycles" Type="decimal" Scale="2" />
+          <Property Name="Price_Golf_Bags" Type="decimal" Scale="2" />
+          <Property Name="Price_Child_Safety" Type="decimal" Scale="2" />
+          <Property Name="Price_Child_Booster" Type="decimal" Scale="2" />
+          <Property Name="IS_RQ" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ID_Reservation" />
+          </Key>
+          <Property Name="ID_Reservation" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Locator" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Date_Record" Type="datetime" />
+          <Property Name="Date_Output" Type="datetime" />
+          <Property Name="Date_Arrival" Type="datetime" />
+          <Property Name="ID_Destination_Output" Type="bigint" />
+          <Property Name="ID_Destination_Arrival" Type="bigint" />
+          <Property Name="FlightNumber_Output" Type="nvarchar" MaxLength="10" />
+          <Property Name="FlightNumber_Arrival" Type="nvarchar" MaxLength="10" />
+          <Property Name="Name_Accommodation" Type="nvarchar" MaxLength="200" />
+          <Property Name="Address_Accommodation" Type="nvarchar" MaxLength="300" />
+          <Property Name="ID_Supplier" Type="int" />
+          <Property Name="Margin" Type="decimal" Scale="2" />
+          <Property Name="ID_MarginType" Type="int" />
+          <Property Name="Price_Supplier" Type="decimal" Scale="2" />
+          <Property Name="Price_SubTotal" Type="decimal" Scale="2" />
+          <Property Name="Price_Total" Type="decimal" Scale="2" />
+          <Property Name="Price_Discounts" Type="decimal" Scale="2" />
+          <Property Name="Passengers" Type="int" />
+          <Property Name="Suitcase" Type="int" />
+          <Property Name="Hand_Bags" Type="int" />
+          <Property Name="E_J_Time" Type="int" />
+          <Property Name="Cycles" Type="int" />
+          <Property Name="Golf_Bags" Type="int" />
+          <Property Name="Child_Safety" Type="int" />
+          <Property Name="Child_Booster" Type="int" />
+          <Property Name="Price_Suitcase" Type="decimal" Scale="2" />
+          <Property Name="Price_Hand_Bags" Type="decimal" Scale="2" />
+          <Property Name="Price_Cycles" Type="decimal" Scale="2" />
+          <Property Name="Price_Golf_Bags" Type="decimal" Scale="2" />
+          <Property Name="Price_Child_Safety" Type="decimal" Scale="2" />
+          <Property Name="Price_Child_Booster" Type="decimal" Scale="2" />
+          <Property Name="Price_Booking_Fee" Type="decimal" Scale="2" />
+          <Property Name="ID_Currency" Type="nvarchar" MaxLength="10" />
+          <Property Name="VAT" Type="decimal" Scale="2" />
+          <Property Name="ID_Reservation_Satus" Type="int" />
+          <Property Name="IP" Type="nvarchar" MaxLength="20" />
+          <Property Name="Client_Note" Type="nvarchar" MaxLength="400" />
+          <Property Name="ID_Client" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Reservation_Status">
+          <Key>
+            <PropertyRef Name="ID_Reservation_Satus" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Reservation_Satus" Type="int" Nullable="false" />
+          <Property Name="ID_Language" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Reservation_Terms">
+          <Key>
+            <PropertyRef Name="ID_Reservation" />
+          </Key>
+          <Property Name="ID_Reservation" Type="bigint" Nullable="false" />
+          <Property Name="Terms" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="ID_Supplier" />
+          </Key>
+          <Property Name="ID_Supplier" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="ID_Vehicle" />
+          </Key>
+          <Property Name="ID_Vehicle" Type="bigint" Nullable="false" />
+          <Property Name="URL_Image" Type="nvarchar" MaxLength="800" />
+          <Property Name="Passengers" Type="int" Nullable="false" />
+          <Property Name="Suitcase" Type="int" Nullable="false" />
+          <Property Name="Hand_Bags" Type="int" Nullable="false" />
+          <Property Name="E_J_Time" Type="int" Nullable="false" />
+          <Property Name="Cycles" Type="int" Nullable="false" />
+          <Property Name="Golf_Bags" Type="int" Nullable="false" />
+          <Property Name="Child_Safety" Type="int" Nullable="false" />
+          <Property Name="Child_Booster" Type="int" Nullable="false" />
+          <Property Name="ID_Group" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicle_Language">
+          <Key>
+            <PropertyRef Name="ID_Vehicle" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Vehicle" Type="bigint" Nullable="false" />
+          <Property Name="ID_Language" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="Terms" Type="nvarchar" MaxLength="800" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="ID_Zone" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Zone" Type="bigint" Nullable="false" />
+          <Property Name="ID_Language" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ID_Country" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TransfersModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="TransfersEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="TransfersModel.Client" />
+          <EntitySet Name="Client_Invoice" EntityType="TransfersModel.Client_Invoice" />
+          <EntitySet Name="Country" EntityType="TransfersModel.Country" />
+          <EntitySet Name="Currency" EntityType="TransfersModel.Currency" />
+          <EntitySet Name="Destination" EntityType="TransfersModel.Destination" />
+          <EntitySet Name="Destination_Supplier" EntityType="TransfersModel.Destination_Supplier" />
+          <EntitySet Name="Group" EntityType="TransfersModel.Group" />
+          <EntitySet Name="Language" EntityType="TransfersModel.Language" />
+          <EntitySet Name="Language_Text" EntityType="TransfersModel.Language_Text" />
+          <EntitySet Name="MarginType" EntityType="TransfersModel.MarginType" />
+          <EntitySet Name="Rate" EntityType="TransfersModel.Rate" />
+          <EntitySet Name="Rate_Language" EntityType="TransfersModel.Rate_Language" />
+          <EntitySet Name="Rate_Vehicle" EntityType="TransfersModel.Rate_Vehicle" />
+          <EntitySet Name="Reservation" EntityType="TransfersModel.Reservation" />
+          <EntitySet Name="Reservation_Status" EntityType="TransfersModel.Reservation_Status" />
+          <EntitySet Name="Reservation_Terms" EntityType="TransfersModel.Reservation_Terms" />
+          <EntitySet Name="Supplier" EntityType="TransfersModel.Supplier" />
+          <EntitySet Name="sysdiagrams" EntityType="TransfersModel.sysdiagrams" />
+          <EntitySet Name="Vehicle" EntityType="TransfersModel.Vehicle" />
+          <EntitySet Name="Vehicle_Language" EntityType="TransfersModel.Vehicle_Language" />
+          <EntitySet Name="Zone" EntityType="TransfersModel.Zone" />
+        </EntityContainer>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID_Client" />
+          </Key>
+          <Property Name="ID_Client" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Date_Birth" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Client_Invoice">
+          <Key>
+            <PropertyRef Name="ID_Client_Invoice" />
+          </Key>
+          <Property Name="ID_Client_Invoice" Type="Int32" Nullable="false" />
+          <Property Name="ID_Client" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Company_Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="80" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Mail" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="80" Unicode="true" FixedLength="false" />
+          <Property Name="Zip" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ID_Country" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ID_Reservation" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID_Country" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Country" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ID_Language" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="ID_Currency" />
+          </Key>
+          <Property Name="ID_Currency" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Symbol" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="ID_Destination" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Destination" Type="Int64" Nullable="false" />
+          <Property Name="ID_Language" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ID_Zone" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Destination_Supplier">
+          <Key>
+            <PropertyRef Name="ID_Destination" />
+            <PropertyRef Name="ID_Supplier" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Destination" Type="Int64" Nullable="false" />
+          <Property Name="ID_Supplier" Type="Int32" Nullable="false" />
+          <Property Name="ID_Language" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Terms" Type="String" MaxLength="800" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="ID_Group" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Group" Type="Int32" Nullable="false" />
+          <Property Name="ID_Language" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Terms" Type="String" MaxLength="800" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Language" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Language_Text">
+          <Key>
+            <PropertyRef Name="ID_Text" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Text" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ID_Language" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="MarginType">
+          <Key>
+            <PropertyRef Name="ID_MarginType" />
+          </Key>
+          <Property Name="ID_MarginType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Rate">
+          <Key>
+            <PropertyRef Name="ID_Rate" />
+          </Key>
+          <Property Name="ID_Rate" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Destination_Output" Type="Int64" Nullable="false" />
+          <Property Name="ID_Destination_Arrival" Type="Int64" Nullable="false" />
+          <Property Name="Date_Start" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Date_End" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_Supplier" Type="Int32" Nullable="false" />
+          <Property Name="ID_Currency" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="VAT" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rate_Language">
+          <Key>
+            <PropertyRef Name="ID_Rate" />
+            <PropertyRef Name="ID_Vehicle" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Rate" Type="Int64" Nullable="false" />
+          <Property Name="ID_Vehicle" Type="Int64" Nullable="false" />
+          <Property Name="ID_Language" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Terms" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Rate_Vehicle">
+          <Key>
+            <PropertyRef Name="ID_Rate" />
+            <PropertyRef Name="ID_Vehicle" />
+          </Key>
+          <Property Name="ID_Rate" Type="Int64" Nullable="false" />
+          <Property Name="ID_Vehicle" Type="Int64" Nullable="false" />
+          <Property Name="Margin" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ID_MarginType" Type="Int32" Nullable="false" />
+          <Property Name="Price_Supplier" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Extra_Suitcase" Type="Int32" />
+          <Property Name="Extra_Hand_Bags" Type="Int32" />
+          <Property Name="Extra_Cycles" Type="Int32" />
+          <Property Name="Extra_Golf_Bags" Type="Int32" />
+          <Property Name="Extra_Child_Safety" Type="Int32" />
+          <Property Name="Extra_Child_Booster" Type="Int32" />
+          <Property Name="Price_Suitcase" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Hand_Bags" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Cycles" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Golf_Bags" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Child_Safety" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Child_Booster" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IS_RQ" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ID_Reservation" />
+          </Key>
+          <Property Name="ID_Reservation" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Locator" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Date_Record" Type="DateTime" Precision="3" />
+          <Property Name="Date_Output" Type="DateTime" Precision="3" />
+          <Property Name="Date_Arrival" Type="DateTime" Precision="3" />
+          <Property Name="ID_Destination_Output" Type="Int64" />
+          <Property Name="ID_Destination_Arrival" Type="Int64" />
+          <Property Name="FlightNumber_Output" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="FlightNumber_Arrival" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Name_Accommodation" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Address_Accommodation" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="ID_Supplier" Type="Int32" />
+          <Property Name="Margin" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ID_MarginType" Type="Int32" />
+          <Property Name="Price_Supplier" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_SubTotal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Total" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Discounts" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Passengers" Type="Int32" />
+          <Property Name="Suitcase" Type="Int32" />
+          <Property Name="Hand_Bags" Type="Int32" />
+          <Property Name="E_J_Time" Type="Int32" />
+          <Property Name="Cycles" Type="Int32" />
+          <Property Name="Golf_Bags" Type="Int32" />
+          <Property Name="Child_Safety" Type="Int32" />
+          <Property Name="Child_Booster" Type="Int32" />
+          <Property Name="Price_Suitcase" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Hand_Bags" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Cycles" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Golf_Bags" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Child_Safety" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Child_Booster" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Price_Booking_Fee" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ID_Currency" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="VAT" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ID_Reservation_Satus" Type="Int32" />
+          <Property Name="IP" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Client_Note" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
+          <Property Name="ID_Client" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Reservation_Status">
+          <Key>
+            <PropertyRef Name="ID_Reservation_Satus" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Reservation_Satus" Type="Int32" Nullable="false" />
+          <Property Name="ID_Language" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Reservation_Terms">
+          <Key>
+            <PropertyRef Name="ID_Reservation" />
+          </Key>
+          <Property Name="ID_Reservation" Type="Int64" Nullable="false" />
+          <Property Name="Terms" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="ID_Supplier" />
+          </Key>
+          <Property Name="ID_Supplier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="ID_Vehicle" />
+          </Key>
+          <Property Name="ID_Vehicle" Type="Int64" Nullable="false" />
+          <Property Name="URL_Image" Type="String" MaxLength="800" Unicode="true" FixedLength="false" />
+          <Property Name="Passengers" Type="Int32" Nullable="false" />
+          <Property Name="Suitcase" Type="Int32" Nullable="false" />
+          <Property Name="Hand_Bags" Type="Int32" Nullable="false" />
+          <Property Name="E_J_Time" Type="Int32" Nullable="false" />
+          <Property Name="Cycles" Type="Int32" Nullable="false" />
+          <Property Name="Golf_Bags" Type="Int32" Nullable="false" />
+          <Property Name="Child_Safety" Type="Int32" Nullable="false" />
+          <Property Name="Child_Booster" Type="Int32" Nullable="false" />
+          <Property Name="ID_Group" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicle_Language">
+          <Key>
+            <PropertyRef Name="ID_Vehicle" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Vehicle" Type="Int64" Nullable="false" />
+          <Property Name="ID_Language" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Terms" Type="String" MaxLength="800" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="ID_Zone" />
+            <PropertyRef Name="ID_Language" />
+          </Key>
+          <Property Name="ID_Zone" Type="Int64" Nullable="false" />
+          <Property Name="ID_Language" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ID_Country" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TransfersModelStoreContainer" CdmEntityContainer="TransfersEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="TransfersModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Date_Birth" ColumnName="Date_Birth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client_Invoice">
+            <EntityTypeMapping TypeName="TransfersModel.Client_Invoice">
+              <MappingFragment StoreEntitySet="Client_Invoice">
+                <ScalarProperty Name="ID_Client_Invoice" ColumnName="ID_Client_Invoice" />
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company_Name" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+                <ScalarProperty Name="ID_Reservation" ColumnName="ID_Reservation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="TransfersModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currency">
+            <EntityTypeMapping TypeName="TransfersModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="ID_Currency" ColumnName="ID_Currency" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destination">
+            <EntityTypeMapping TypeName="TransfersModel.Destination">
+              <MappingFragment StoreEntitySet="Destination">
+                <ScalarProperty Name="ID_Destination" ColumnName="ID_Destination" />
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_Zone" ColumnName="ID_Zone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destination_Supplier">
+            <EntityTypeMapping TypeName="TransfersModel.Destination_Supplier">
+              <MappingFragment StoreEntitySet="Destination_Supplier">
+                <ScalarProperty Name="ID_Destination" ColumnName="ID_Destination" />
+                <ScalarProperty Name="ID_Supplier" ColumnName="ID_Supplier" />
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group">
+            <EntityTypeMapping TypeName="TransfersModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="ID_Group" ColumnName="ID_Group" />
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Language">
+            <EntityTypeMapping TypeName="TransfersModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Language_Text">
+            <EntityTypeMapping TypeName="TransfersModel.Language_Text">
+              <MappingFragment StoreEntitySet="Language_Text">
+                <ScalarProperty Name="ID_Text" ColumnName="ID_Text" />
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarginType">
+            <EntityTypeMapping TypeName="TransfersModel.MarginType">
+              <MappingFragment StoreEntitySet="MarginType">
+                <ScalarProperty Name="ID_MarginType" ColumnName="ID_MarginType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rate">
+            <EntityTypeMapping TypeName="TransfersModel.Rate">
+              <MappingFragment StoreEntitySet="Rate">
+                <ScalarProperty Name="ID_Rate" ColumnName="ID_Rate" />
+                <ScalarProperty Name="ID_Destination_Output" ColumnName="ID_Destination_Output" />
+                <ScalarProperty Name="ID_Destination_Arrival" ColumnName="ID_Destination_Arrival" />
+                <ScalarProperty Name="Date_Start" ColumnName="Date_Start" />
+                <ScalarProperty Name="Date_End" ColumnName="Date_End" />
+                <ScalarProperty Name="ID_Supplier" ColumnName="ID_Supplier" />
+                <ScalarProperty Name="ID_Currency" ColumnName="ID_Currency" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rate_Language">
+            <EntityTypeMapping TypeName="TransfersModel.Rate_Language">
+              <MappingFragment StoreEntitySet="Rate_Language">
+                <ScalarProperty Name="ID_Rate" ColumnName="ID_Rate" />
+                <ScalarProperty Name="ID_Vehicle" ColumnName="ID_Vehicle" />
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rate_Vehicle">
+            <EntityTypeMapping TypeName="TransfersModel.Rate_Vehicle">
+              <MappingFragment StoreEntitySet="Rate_Vehicle">
+                <ScalarProperty Name="ID_Rate" ColumnName="ID_Rate" />
+                <ScalarProperty Name="ID_Vehicle" ColumnName="ID_Vehicle" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="ID_MarginType" ColumnName="ID_MarginType" />
+                <ScalarProperty Name="Price_Supplier" ColumnName="Price_Supplier" />
+                <ScalarProperty Name="Extra_Suitcase" ColumnName="Extra_Suitcase" />
+                <ScalarProperty Name="Extra_Hand_Bags" ColumnName="Extra_Hand_Bags" />
+                <ScalarProperty Name="Extra_Cycles" ColumnName="Extra_Cycles" />
+                <ScalarProperty Name="Extra_Golf_Bags" ColumnName="Extra_Golf_Bags" />
+                <ScalarProperty Name="Extra_Child_Safety" ColumnName="Extra_Child_Safety" />
+                <ScalarProperty Name="Extra_Child_Booster" ColumnName="Extra_Child_Booster" />
+                <ScalarProperty Name="Price_Suitcase" ColumnName="Price_Suitcase" />
+                <ScalarProperty Name="Price_Hand_Bags" ColumnName="Price_Hand_Bags" />
+                <ScalarProperty Name="Price_Cycles" ColumnName="Price_Cycles" />
+                <ScalarProperty Name="Price_Golf_Bags" ColumnName="Price_Golf_Bags" />
+                <ScalarProperty Name="Price_Child_Safety" ColumnName="Price_Child_Safety" />
+                <ScalarProperty Name="Price_Child_Booster" ColumnName="Price_Child_Booster" />
+                <ScalarProperty Name="IS_RQ" ColumnName="IS_RQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservation">
+            <EntityTypeMapping TypeName="TransfersModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="ID_Reservation" ColumnName="ID_Reservation" />
+                <ScalarProperty Name="Locator" ColumnName="Locator" />
+                <ScalarProperty Name="Date_Record" ColumnName="Date_Record" />
+                <ScalarProperty Name="Date_Output" ColumnName="Date_Output" />
+                <ScalarProperty Name="Date_Arrival" ColumnName="Date_Arrival" />
+                <ScalarProperty Name="ID_Destination_Output" ColumnName="ID_Destination_Output" />
+                <ScalarProperty Name="ID_Destination_Arrival" ColumnName="ID_Destination_Arrival" />
+                <ScalarProperty Name="FlightNumber_Output" ColumnName="FlightNumber_Output" />
+                <ScalarProperty Name="FlightNumber_Arrival" ColumnName="FlightNumber_Arrival" />
+                <ScalarProperty Name="Name_Accommodation" ColumnName="Name_Accommodation" />
+                <ScalarProperty Name="Address_Accommodation" ColumnName="Address_Accommodation" />
+                <ScalarProperty Name="ID_Supplier" ColumnName="ID_Supplier" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="ID_MarginType" ColumnName="ID_MarginType" />
+                <ScalarProperty Name="Price_Supplier" ColumnName="Price_Supplier" />
+                <ScalarProperty Name="Price_SubTotal" ColumnName="Price_SubTotal" />
+                <ScalarProperty Name="Price_Total" ColumnName="Price_Total" />
+                <ScalarProperty Name="Price_Discounts" ColumnName="Price_Discounts" />
+                <ScalarProperty Name="Passengers" ColumnName="Passengers" />
+                <ScalarProperty Name="Suitcase" ColumnName="Suitcase" />
+                <ScalarProperty Name="Hand_Bags" ColumnName="Hand_Bags" />
+                <ScalarProperty Name="E_J_Time" ColumnName="E_J_Time" />
+                <ScalarProperty Name="Cycles" ColumnName="Cycles" />
+                <ScalarProperty Name="Golf_Bags" ColumnName="Golf_Bags" />
+                <ScalarProperty Name="Child_Safety" ColumnName="Child_Safety" />
+                <ScalarProperty Name="Child_Booster" ColumnName="Child_Booster" />
+                <ScalarProperty Name="Price_Suitcase" ColumnName="Price_Suitcase" />
+                <ScalarProperty Name="Price_Hand_Bags" ColumnName="Price_Hand_Bags" />
+                <ScalarProperty Name="Price_Cycles" ColumnName="Price_Cycles" />
+                <ScalarProperty Name="Price_Golf_Bags" ColumnName="Price_Golf_Bags" />
+                <ScalarProperty Name="Price_Child_Safety" ColumnName="Price_Child_Safety" />
+                <ScalarProperty Name="Price_Child_Booster" ColumnName="Price_Child_Booster" />
+                <ScalarProperty Name="Price_Booking_Fee" ColumnName="Price_Booking_Fee" />
+                <ScalarProperty Name="ID_Currency" ColumnName="ID_Currency" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="ID_Reservation_Satus" ColumnName="ID_Reservation_Satus" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Client_Note" ColumnName="Client_Note" />
+                <ScalarProperty Name="ID_Client" ColumnName="ID_Client" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservation_Status">
+            <EntityTypeMapping TypeName="TransfersModel.Reservation_Status">
+              <MappingFragment StoreEntitySet="Reservation_Status">
+                <ScalarProperty Name="ID_Reservation_Satus" ColumnName="ID_Reservation_Satus" />
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservation_Terms">
+            <EntityTypeMapping TypeName="TransfersModel.Reservation_Terms">
+              <MappingFragment StoreEntitySet="Reservation_Terms">
+                <ScalarProperty Name="ID_Reservation" ColumnName="ID_Reservation" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="TransfersModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="ID_Supplier" ColumnName="ID_Supplier" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TransfersModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicle">
+            <EntityTypeMapping TypeName="TransfersModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicle">
+                <ScalarProperty Name="ID_Vehicle" ColumnName="ID_Vehicle" />
+                <ScalarProperty Name="URL_Image" ColumnName="URL_Image" />
+                <ScalarProperty Name="Passengers" ColumnName="Passengers" />
+                <ScalarProperty Name="Suitcase" ColumnName="Suitcase" />
+                <ScalarProperty Name="Hand_Bags" ColumnName="Hand_Bags" />
+                <ScalarProperty Name="E_J_Time" ColumnName="E_J_Time" />
+                <ScalarProperty Name="Cycles" ColumnName="Cycles" />
+                <ScalarProperty Name="Golf_Bags" ColumnName="Golf_Bags" />
+                <ScalarProperty Name="Child_Safety" ColumnName="Child_Safety" />
+                <ScalarProperty Name="Child_Booster" ColumnName="Child_Booster" />
+                <ScalarProperty Name="ID_Group" ColumnName="ID_Group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicle_Language">
+            <EntityTypeMapping TypeName="TransfersModel.Vehicle_Language">
+              <MappingFragment StoreEntitySet="Vehicle_Language">
+                <ScalarProperty Name="ID_Vehicle" ColumnName="ID_Vehicle" />
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Terms" ColumnName="Terms" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zone">
+            <EntityTypeMapping TypeName="TransfersModel.Zone">
+              <MappingFragment StoreEntitySet="Zone">
+                <ScalarProperty Name="ID_Zone" ColumnName="ID_Zone" />
+                <ScalarProperty Name="ID_Language" ColumnName="ID_Language" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID_Country" ColumnName="ID_Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

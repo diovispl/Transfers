@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4ed98c199a84c1a8f588c21d0235ade" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="TransfersModel.Client" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Client_Invoice" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Country" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Currency" Width="1.5" PointX="2.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Destination" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Destination_Supplier" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Group" Width="1.5" PointX="4.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Language" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Language_Text" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.MarginType" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Rate" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Rate_Language" Width="1.5" PointX="6.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Rate_Vehicle" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Reservation" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Reservation_Status" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Reservation_Terms" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Supplier" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Vehicle" Width="1.5" PointX="8.75" PointY="2.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Vehicle_Language" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="TransfersModel.Zone" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
